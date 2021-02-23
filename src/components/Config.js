@@ -13,12 +13,13 @@ import classnames from "classnames";
 const Config = ({
   config: { stopped, isDrawing, stepCount, borders },
   onChange,
+  setNextStepOfGame,
 }) => {
   return (
     <div className="grid grid-cols-1 grid-rows-2 gap-2 p-4 items-start">
       <div className="grid grid-cols-3 gap-1 flex-wrap">
         <button
-          onClick={() => onChange({ action: stopped ? "start" : "stop" })}
+          onClick={() => onChange({ action: stopped ? 'start' : 'stop' })}
           className="mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-300 py-1 px-2 border border-gray-600 hover:border-transparent rounded"
         >
           {stopped ? (
@@ -33,39 +34,42 @@ const Config = ({
             </>
           )}
         </button>
-        <button className="mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-300 py-1 px-2 border border-gray-600 hover:border-transparent rounded">
+        <button
+          onClick={setNextStepOfGame}
+          className="mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-300 py-1 px-2 border border-gray-600 hover:border-transparent rounded"
+        >
           <FiArrowRightCircle className="mr-2 text-3xl" />
           <span>Next step</span>
         </button>
         <button
-          onClick={() => onChange({ action: "clear" })}
+          onClick={() => onChange({ action: 'clear' })}
           className="mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-300 py-1 px-2 border border-gray-600 hover:border-transparent rounded"
         >
           <FiXCircle className="mr-2 text-3xl" />
           <span>Clear</span>
         </button>
         <button
-          onClick={() => onChange({ action: "restart" })}
+          onClick={() => onChange({ action: 'restart' })}
           className="mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-300 py-1 px-2 border border-gray-600 hover:border-transparent rounded"
         >
           <FiRotateCw className="mr-2 text-3xl" />
           <span>Restart</span>
         </button>
         <button
-          onClick={() => onChange({ action: "draw:toggle" })}
+          onClick={() => onChange({ action: 'draw:toggle' })}
           className={classnames(
-            "mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-400 py-1 px-2 border border-gray-600 hover:border-transparent rounded",
-            { "bg-gray-300 border-none": isDrawing }
+            'mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-400 py-1 px-2 border border-gray-600 hover:border-transparent rounded',
+            { 'bg-gray-300 border-none': isDrawing },
           )}
         >
           <FiEdit2 className="mr-2 text-3xl" />
           <span>Draw</span>
         </button>
         <button
-          onClick={() => onChange({ action: "borders:toggle" })}
+          onClick={() => onChange({ action: 'borders:toggle' })}
           className={classnames(
-            "mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-400 py-1 px-2 border border-gray-600 hover:border-transparent rounded",
-            { "bg-gray-300 border-none": borders }
+            'mr-2 inline-flex justify-center items-center text-2xl bg-transparent hover:bg-gray-400 py-1 px-2 border border-gray-600 hover:border-transparent rounded',
+            { 'bg-gray-300 border-none': borders },
           )}
         >
           <FiGlobe className="mr-2 text-3xl" />
@@ -76,7 +80,7 @@ const Config = ({
         <label className="text-2xl">Step: {stepCount}</label>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Config;
